@@ -71,3 +71,5 @@ if st.button("Generate QR Code"):
 
 st.balloons()
 
+
+
