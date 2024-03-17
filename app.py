@@ -22,7 +22,7 @@ def get_url_filename(url):
 
 import streamlit as st
 
-st.title("QR Code Generator")
+st.title("QR Code Generator ✨")
 
 st.write("")  
 
