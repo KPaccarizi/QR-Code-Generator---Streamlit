@@ -5,7 +5,6 @@ import io
 import base64
 from urllib.parse import urlparse
 
-
 def get_image_as_base64(image):
     buffer = io.BytesIO()
     image.save(buffer, format="PNG")
@@ -20,13 +19,12 @@ def get_url_filename(url):
     path = parsed_uri.path.strip('/').replace('/', '_')
     return f"{main_domain}_{path}" if path else main_domain
 
-import streamlit as st
 
-st.title("QR Code Generator ✨")
+st.title("✨ QR Code Generator ✨")
 
 st.write("")  
 
-st.write("Create custom QR codes for multiple URLs with this easy-to-use generator.\nSimply input your links, choose a color, and generate unique QR codes instantly!")
+st.write("Create custom QR codes for multiple URLs with this easy-to-use generator. \nSimply input your links, choose a color, and generate unique QR codes instantly! 🚀")
 
 st.write("")  
 
@@ -41,8 +39,8 @@ if st.button("Generate QR Code"):
         urls = content.split("\n")
 
         for i, url in enumerate(urls):
-            if url.strip():
-                
+            url = url.strip()
+            if url and urlparse(url).scheme in ['http', 'https']: # Check if input is a valid URL
                 # Generate QR code
                 qr = qrcode.QRCode(
                     version=1,
@@ -66,7 +64,10 @@ if st.button("Generate QR Code"):
                 st.image(img_bytes, caption=f"QR code for {url}", use_column_width=True)
                 file_name = get_url_filename(url)
                 st.markdown(f'<a href="data:image/png;base64,{img_base64}" download="{file_name}.png" style="display:inline-block;background-color:#4CAF50;border:none;color:white;padding:8px 16px;text-align:center;text-decoration:none;font-size:16px;margin:4px 2px;cursor:pointer;">Download QR code</a>', unsafe_allow_html=True)
+            elif url:
+                st.error(f"'{url}' is not a valid URL.")
     else:
-        
-        
-                               st.error("Please enter URL(s) for the QR code.")
+        st.error("Please enter URL(s) for the QR code.")
+
+st.balloons()
+
