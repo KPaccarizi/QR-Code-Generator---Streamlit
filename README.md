@@ -27,5 +27,5 @@ To run the application locally, make sure you have the required dependencies ins
 ```bash
 streamlit run app.py
 
-![QR Code Generator](qr3.png)
+!(qr3.png)
 
