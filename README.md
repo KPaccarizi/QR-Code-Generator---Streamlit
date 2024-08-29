@@ -23,9 +23,9 @@ This is a simple QR code generator web application built using Streamlit. It all
 ## Usage
 
 To run the application locally, make sure you have the required dependencies installed. Then, execute the following command:
+![QR Code Generator](qr3.png)
 
 ```bash
 streamlit run app.py
 
-![QR Code Generator](qr3.png)
 
